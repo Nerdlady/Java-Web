@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Survey</title>
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/survey.css">
+    </head>
+    <body>
+        <h4>Survey</h4>
+        <hr/>
+        <form class="container-fluid" method="post">
+            <div class="row">
+                <label class="col-sm-1 col-lg-offset-3" for="fisrt-name">First name: </label>
+                <div class="form-group col-sm-3">
+                    <input class="form-control" type="text" name="first-name" id="fisrt-name"/><br/>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-1 col-lg-offset-3" for="last-name">Last name: </label>
+                <div class="form-group col-sm-3">
+                    <input class="form-control" type="text" name="last-name" id="last-name"><br/>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-1 col-lg-offset-3" for="birthdate">Birthdate: </label>
+                <div class="form-group col-sm-3">
+                    <input class="form-control" type="date" name="birthdate" id="birthdate"><br/>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-1 col-lg-offset-3">Gender: </label>
+                <div class="form-group col-sm-3">
+                    <label>
+                        <input type="radio" name="gender" value="male">
+                    </label> Male<br/>
+                    <label>
+                        <input type="radio" name="gender" value="female">
+                    </label> Female<br/>
+                    <label>
+                        <input type="radio" name="gender" value="Do not want to answer">
+                    </label> Do not want to answer<br/>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-1 col-lg-offset-3" for="status">Status: </label>
+                <div class="form-group col-sm-3">
+                    <select class="form-control" name="status" id="status">
+                        <option>Student</option>
+                        <option>Part-time Employee</option>
+                        <option>Full-time Employee</option>
+                        <option>Unemployed</option>
+                        <option>Do not want to answer</option>
+                    </select>
+                </div>
+                <br/>
+                <br/>
+            </div>
+            <div class="row">
+                <label class="col-sm-1 col-lg-offset-3" for="recommendations">Recommendations: </label>
+                <div class="form-group col-sm-3">
+                    <textarea class="form-control" name="recommendations" id="recommendations"></textarea>
+                </div>
+                <p class="col-sm-3" style="font-size: xx-small">Please tell us what re your recommendations for us and how to
+                    improve our products.</p><br/>
+            </div>
+            <div class="row">
+                <label class="col-sm-1 col-lg-offset-3">You own: </label>
+
+                <input type="checkbox" name="own1" value="Laptop">Laptop
+                <input type="checkbox" name="own2" value="Smart phone">Smart phone
+                <input type="checkbox" name="own3" value="Mobile phone">Mobile phone
+                <input type="checkbox" name="own4" value="Car">Car
+                <input type="checkbox" name="own5" value="Bike">Bike
+            </div><br/>
+            <div class="form-group col-sm-1 col-sm-offset-4">
+                <input class="form-control" type="submit" value="Reset all fields">
+            </div>
+            <div class="form-group col-sm-1 ">
+                <input  class="form-control " id="send_survey"  type="submit" value="Send Survey">
+            </div>
+
+        </form>
+
+
+        <script src="/jQuery/jquery.min.js"></script>
+
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+    </body>
+</html>

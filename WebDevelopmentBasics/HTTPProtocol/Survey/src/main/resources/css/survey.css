@@ -1,0 +1,12 @@
+form{
+    display: block;
+    background-color: aqua;
+}
+
+form label{
+    display: inline-block;
+}
+
+#send_survey{
+    background-color: #5bc0de;
+}
