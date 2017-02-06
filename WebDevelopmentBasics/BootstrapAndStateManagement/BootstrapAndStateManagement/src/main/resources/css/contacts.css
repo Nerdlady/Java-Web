@@ -1,0 +1,12 @@
+form div{
+    margin: 10px;
+}
+
+.glyphicon-asterisk{
+    color: red;
+}
+
+input[type=submit] {
+    width: 200px;
+    float: right;
+}

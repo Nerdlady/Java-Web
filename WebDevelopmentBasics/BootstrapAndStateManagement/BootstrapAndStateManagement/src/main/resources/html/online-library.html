@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Online Library</title>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../css/online-library.css"/>
+    </head>
+    <body>
+    <nav class="navbar navbar-default navbar-toggleable-md navbar-light bg-faded">
+        <div class="container-fluid">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarText" aria-expanded="false" aria-controls="navbarText">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Library</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbarText">
+                <ul class="nav navbar-nav mr-auto">
+                    <li><a href="#">C# Books</a></li>
+                    <li><a href="#">Java Books</a></li>
+                    <li>
+                        <form class="navbar-form col-xs-12">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for a book...">
+                                <span class="input-group-btn">
+                                    <input type="submit" class="form-control" value="GO!" >
+                                </span>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+
+               <div class="navbar-right">
+                    <span class="navbar-text">Hello, <a href="#">Log in</a></span>
+                    <span class="navbar-text">
+                        <a href="#"><img width="30px" src="../images/cart.png"></a>
+                    <div class="badge bg-danger badge-img">2</div>
+                </span>
+                    <span class="navbar-text">
+                    <a href="#"><img width="30px" src="../images/uk_flag.png"></a>
+                    <a href="#"><img width="30px" src="../images/bg_flag.png"></a>
+                </span>
+               </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="col-sm-3">
+            <div class="list-group">
+                <a href="#" class="list-group-item active">Subscribtion Process</a>
+                <a href="#" class="list-group-item">General Information</a>
+                <a href="#" class="list-group-item">Contacts</a>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="card-deck row">
+                <div class="card col-sm-6 col-md-4 col-lg-3">
+                    <img class="card-img-top img-fluid img-responsive img-thumbnail" src="../images/book.jpg" alt="Book" >
+                    <div class="card-block">
+                        <h2 class="card-title">Programming Fundamentals C#</h2>
+                        <h5 class="card-text"><strong>45</strong>  copies available</h5>
+                        <img src="../images/rating.png"><br/>
+                        <p class="card-text"><a href="#">Details</a></p>
+                        <input type="button" class="btn btn-primary" value="Borrow">
+                        <button type="button" class="btn btn-default">Add to Cart</button>
+                        <p class="card-text"><small class="text-muted">Last time borrowed 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="card col-sm-6 col-md-4 col-lg-3">
+                    <img class="card-img-top img-fluid img-responsive img-thumbnail" src="../images/book.jpg" alt="Book" >
+                    <div class="card-block">
+                        <h2 class="card-title">Programming Fundamentals Java</h2>
+                        <h5 class="card-text"><strong>3</strong>  copies available</h5>
+                        <img src="../images/rating.png"><br/>
+                        <p class="card-text"><a href="#">Details</a></p>
+                        <input type="button" class="btn btn-primary" value="Borrow">
+                        <button type="button" class="btn btn-default">Add to Cart</button>
+                        <p class="card-text"><small class="text-muted">Last time borrowed 5 hours ago</small></p>
+                    </div>
+                </div>
+                <div class="card col-sm-6 col-md-4  col-lg-3">
+                    <img class="card-img-top img-fluid img-responsive img-thumbnail" src="../images/book.jpg" alt="Book" >
+                    <div class="card-block">
+                        <h2 class="card-title">Основи на програмирането C#</h2>
+                        <h5 class="card-text"><strong>3</strong>  copies available</h5>
+                        <img src="../images/rating.png"><br/>
+                        <p class="card-text"><a href="#">Details</a></p>
+                        <input type="button" class="btn btn-primary" value="Borrow">
+                        <button type="button" class="btn btn-default">Add to Cart</button>
+                        <p class="card-text"><small class="text-muted">Last time borrowed 1 day ago</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-3 row">
+                <ul class="pagination justify-content-center">
+                    <li><a href="#">Previus</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Next</a> </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <p style="text-align: center;">All Rights Reserved &copy; 2017</p>
+    </footer>
+    <script src="../jQuery/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    </body>
+</html>

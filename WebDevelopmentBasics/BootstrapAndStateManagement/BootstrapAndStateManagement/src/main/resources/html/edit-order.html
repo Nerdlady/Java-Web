@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Edit Order</title>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <a href="productdelivery.cgi"><h3>Back to orders</h3></a>
+            <h2>Edit Order</h2>
+            <form class="form-group">
+                <div class="row">
+                    <label class="col-sm-1" >Id: </label>
+                    <div class="form-group col-sm-3">
+                        <input class="form-control" type="text" name="id" value="%s" readonly/><br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-1" >Name: </label>
+                    <div class="form-group col-sm-3">
+                        <input class="form-control" type="text" name="name" value="%s" readonly/><br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-1" >Type: </label>
+                    <div class="form-group col-sm-3">
+                        <input class="form-control" type="text" name="type" value="%s" readonly/><br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-1" >Payment Date: </label>
+                    <div class="form-group col-sm-3">
+                        <input class="form-control" type="datetime" name="payment-date" value="%s" readonly/><br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-1" >Delivery Date: </label>
+                    <div class="form-group col-sm-3">
+                        <input class="form-control" type="datetime" name="delivery-date" value="%s" readonly/><br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-1" >Delivery Date: </label>
+                    <div class="form-group col-sm-3">
+                        <select class="form-control" name="status">
+                            <option>Pending</option>
+                            <option>Delivered</option>
+                            <option>Declined</option>
+                            <option>In Call to Confirm</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-offset-1">
+                    <input type="submit" class="btn btn-primary" value="Edit">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    <script src="../jQuery/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    </body>
+</html>

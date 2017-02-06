@@ -1,0 +1,14 @@
+form div{
+    margin: 10px;
+}
+input[type=submit]{
+    width: 200px;
+    float: right;
+    margin: 10px;
+}
+
+input[type=reset]{
+    width: 200px;
+    float: right;
+    margin: 10px;
+}
