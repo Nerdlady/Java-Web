@@ -1,76 +1,59 @@
 package server.routing;
 
-import server.handler.RequestHandler;
+import server.handler.GetHandler;
+import server.handler.PostHandler;
+import server.handler.RequestHandlerImpl;
 import server.http.HttpRequestType;
+import server.parser.ControllerAnnotationParser;
+import server.provider.ClassProvider;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ServerRouteConfigImpl implements ServerRouteConfig {
+    private final ClassProvider classProvider;
     private Map<HttpRequestType, Map<String, RoutingContext>> routes;
 
 
-    public ServerRouteConfigImpl(AppRouteConfig appRouteConfig) {
+    public ServerRouteConfigImpl(ClassProvider classProvider) throws IllegalAccessException, InstantiationException {
         this.routes = new HashMap<>();
+        this.classProvider = classProvider;
         for (HttpRequestType httpRequestType : HttpRequestType.values()) {
             this.routes.put(httpRequestType, new HashMap<>());
         }
 
-        this.initializeServerConfig(appRouteConfig);
-    }
-
-    private void initializeServerConfig(AppRouteConfig appRouteConfig) {
-        for (Map.Entry<HttpRequestType, Map<String, RequestHandler>> appRoutes : appRouteConfig.getRoutes()) {
-            for (Map.Entry<String, RequestHandler> routeData : appRoutes.getValue().entrySet()) {
-                List<String> params = new ArrayList<>();
-                String newPatter = this.parseRoute(routeData.getKey(), params);
-
-                RoutingContext routingContext = new RoutingContextImpl(routeData.getValue(),params);
-
-                this.routes.get(appRoutes.getKey()).put(newPatter,routingContext);
-            }
-        }
-    }
-
-    private String parseRoute(String key, List<String> params) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("^");
-
-        while (true) {
-            int startIndexOfRegex = key.indexOf("{");
-            int endIndexOfRegex = key.indexOf("}");
-
-            if (startIndexOfRegex < 0) {
-                break;
-            }
-
-            String regex = key.substring(startIndexOfRegex + 1, endIndexOfRegex);
-
-            Pattern pattern = Pattern.compile("<\\w+>");
-            Matcher matcher = pattern.matcher(regex);
-
-            if (matcher.find()) {
-                String paramName = matcher.group(0).substring(1, matcher.group(0).length() - 1);
-                params.add(paramName);
-            }
-
-            key = key.substring(0, startIndexOfRegex) + regex + key.substring(endIndexOfRegex + 1, key.length());
-
-        }
-
-        stringBuilder.append(key);
-        stringBuilder.append("$");
-
-        return stringBuilder.toString();
+        this.initializeServerConfig();
 
     }
 
     @Override
     public Map<HttpRequestType, Map<String, RoutingContext>> getRoutes() {
         return this.routes;
+    }
+
+    private void initializeServerConfig() throws InstantiationException, IllegalAccessException {
+        Map<HttpRequestType,Map<String,ControllerActionPair>> annotationsRoutes = new HashMap<>();
+
+        ControllerAnnotationParser annotationPair = new ControllerAnnotationParser(this.classProvider);
+
+        annotationPair.parse(annotationsRoutes);
+
+        for (Map.Entry<HttpRequestType, Map<String, ControllerActionPair>> mapEntry : annotationsRoutes.entrySet()) {
+            for (Map.Entry<String,ControllerActionPair> actionPairEntry : mapEntry.getValue().entrySet()) {
+                RequestHandlerImpl requestHandler;
+                if (mapEntry.getKey() == HttpRequestType.GET){
+                    requestHandler = new GetHandler();
+                } else {
+                    requestHandler = new PostHandler();
+                }
+
+                Map<Integer,Class> args = actionPairEntry.getValue().getArgumentMapping();
+                ControllerActionPair actionPair  = actionPairEntry.getValue();
+
+                RoutingContext routingContext = new RoutingContextImpl(requestHandler,actionPair,args);
+
+                this.routes.get(mapEntry.getKey()).put(actionPairEntry.getKey(),routingContext);
+            }
+        }
     }
 }

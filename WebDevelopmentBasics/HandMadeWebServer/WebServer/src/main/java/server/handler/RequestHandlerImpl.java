@@ -15,6 +15,9 @@ public abstract class RequestHandlerImpl implements RequestHandler{
     private Function<HttpContext,HttpResponse> handler;
     private Writer writer;
 
+    public RequestHandlerImpl() {
+    }
+
     RequestHandlerImpl(Function<HttpContext, HttpResponse> function) {
         this.handler = function;
     }
@@ -44,5 +47,9 @@ public abstract class RequestHandlerImpl implements RequestHandler{
             httpSession = new HttpSessionImpl(sessionId);
             httpContext.getHttpRequest().setSession(httpSession);
         }
+    }
+
+    public void setHandler(Function<HttpContext, HttpResponse> handler) {
+        this.handler = handler;
     }
 }

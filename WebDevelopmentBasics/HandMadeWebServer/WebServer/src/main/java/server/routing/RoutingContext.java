@@ -1,8 +1,12 @@
 package server.routing;
 
-import server.handler.RequestHandler;
+import server.handler.RequestHandlerImpl;
+
+import java.util.Map;
 
 public interface RoutingContext {
-    RequestHandler getHandler();
-    Iterable<String> getParamNames();
+    RequestHandlerImpl getHandler();
+    Map<Integer,Class> getArgumentMapping();
+    ControllerActionPair getActionPair();
+
 }

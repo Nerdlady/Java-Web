@@ -9,4 +9,5 @@ public interface RequestHandler {
     void handle(HttpContext httpContext) throws IOException;
 
     void setWriter(Writer writer);
+
 }

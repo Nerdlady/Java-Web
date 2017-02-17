@@ -2,7 +2,7 @@ package server;
 
 import server.constants.Constants;
 import server.http.HttpSession;
-import server.routing.AppRouteConfig;
+import server.provider.ClassProvider;
 import server.routing.ServerRouteConfigImpl;
 
 import java.io.IOException;
@@ -19,9 +19,9 @@ public class ServerImpl implements Server {
     private ServerSocket serverSocket;
     private Map<String,HttpSession> sessions;
 
-    public ServerImpl(ServerSocket serverSocket, AppRouteConfig appRouteConfig) {
+    public ServerImpl(ServerSocket serverSocket, ClassProvider classProvider) throws InstantiationException, IllegalAccessException {
         this.serverSocket = serverSocket;
-        this.serverRouteConfig = new ServerRouteConfigImpl(appRouteConfig);
+        this.serverRouteConfig = new ServerRouteConfigImpl(classProvider);
         this.sessions = new HashMap<>();
     }
 
