@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="unnamed">
+    <output-path>$PROJECT_DIR$/out/artifacts/unnamed</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/../MVCFramework/out/artifacts/MVCFramework_jar/MVCFramework.jar" />
+          <element id="library" level="project" name="Maven: org.modelmapper:modelmapper:0.7.5" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.2.5.Final" />
+        </element>
+        <element id="directory" name="classes">
+          <element id="module-output" name="mvcWorkshop" />
+          <element id="jpa-descriptors" facet="mvcWorkshop/jpa/JPA" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="mvcWorkshop/web/Web" />
+    </root>
+  </artifact>
+</component>
