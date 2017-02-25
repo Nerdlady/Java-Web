@@ -4,17 +4,16 @@ import dtos.KnifeDto;
 import models.Knife;
 import org.modelmapper.ModelMapper;
 import repositories.KnifeRepository;
-import repositories.KnifeRepositoryImpl;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
+@Stateless
 public class KnifeServiceImpl implements KnifeService {
+    @Inject
     private KnifeRepository knifeRepository;
-
-    public KnifeServiceImpl() {
-        this.knifeRepository = KnifeRepositoryImpl.getInstance();
-    }
 
     @Override
     public void save(KnifeDto knifeDto) {
@@ -52,5 +51,20 @@ public class KnifeServiceImpl implements KnifeService {
         Knife knife = this.knifeRepository.getById(id);
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(knife,KnifeDto.class);
+    }
+
+    @Override
+    public void update(KnifeDto knifeDto, Long id) {
+        Knife knife = this.knifeRepository.getById(id);
+        knife.setName(knifeDto.getName());
+        knife.setPrice(knifeDto.getPrice());
+        knife.setImageURL(knifeDto.getImageURL());
+        this.knifeRepository.save(knife);
+    }
+
+    @Override
+    public void delete(Long id) {
+        Knife knife = this.knifeRepository.getById(id);
+        this.knifeRepository.delete(knife);
     }
 }

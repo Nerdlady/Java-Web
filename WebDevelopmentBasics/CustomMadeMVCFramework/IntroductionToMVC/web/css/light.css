@@ -1,0 +1,10 @@
+.navbar-inverse,
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-brand{
+    color: black !important;
+    background-color: lightgray !important;
+}
+.dropdown-menu{
+    color: black !important;
+    background-color: lightgray !important;
+}

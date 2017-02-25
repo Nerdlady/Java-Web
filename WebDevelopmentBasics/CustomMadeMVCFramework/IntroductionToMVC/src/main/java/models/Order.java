@@ -1,18 +1,25 @@
 package models;
 
 import enums.OrderType;
+import enums.Status;
 
+import javax.persistence.*;
+
+@Entity(name = "orders")
 public class Order {
     private Long id;
-    private String buyerName;
-    private String buyerNumber;
-    private String buyerAddress;
+    private String name;
+    private String number;
+    private String address;
     private OrderType orderType;
+    private Status status;
     private Knife product;
 
     public Order() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -21,30 +28,32 @@ public class Order {
         this.id = id;
     }
 
-    public String getBuyerName() {
-        return buyerName;
+    public String getName() {
+        return name;
     }
 
-    public void setBuyerName(String buyerName) {
-        this.buyerName = buyerName;
+    public void setName(String buyerName) {
+        this.name = buyerName;
     }
 
-    public String getBuyerNumber() {
-        return buyerNumber;
+    public String getNumber() {
+        return number;
     }
 
-    public void setBuyerNumber(String buyerNumber) {
-        this.buyerNumber = buyerNumber;
+    public void setNumber(String buyerNumber) {
+        this.number = buyerNumber;
     }
 
-    public String getBuyerAddress() {
-        return buyerAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setBuyerAddress(String buyerAddress) {
-        this.buyerAddress = buyerAddress;
+    public void setAddress(String buyerAddress) {
+        this.address = buyerAddress;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "knife_id",referencedColumnName = "id")
     public Knife getProduct() {
         return product;
     }
@@ -53,11 +62,21 @@ public class Order {
         this.product = product;
     }
 
+    @Enumerated(EnumType.STRING)
     public OrderType getOrderType() {
         return orderType;
     }
 
     public void setOrderType(OrderType orderType) {
         this.orderType = orderType;
+    }
+
+    @Enumerated(EnumType.STRING)
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

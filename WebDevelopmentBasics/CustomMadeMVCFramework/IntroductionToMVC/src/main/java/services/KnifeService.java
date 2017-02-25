@@ -9,4 +9,6 @@ public interface KnifeService {
     List<KnifeDto> getAllKnives();
     List<KnifeDto> getAllWithNameContains(String pattern);
     KnifeDto findById(Long id);
+    void update(KnifeDto knifeDto, Long id);
+    void delete(Long id);
 }

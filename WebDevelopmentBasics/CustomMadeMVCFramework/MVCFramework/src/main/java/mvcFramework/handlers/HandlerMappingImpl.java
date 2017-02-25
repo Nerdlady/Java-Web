@@ -12,6 +12,8 @@ import java.lang.reflect.Method;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HandlerMappingImpl implements HandlerMapping {
     @Override
@@ -112,13 +114,17 @@ public class HandlerMappingImpl implements HandlerMapping {
 
     private Class getClass(File file) throws ClassNotFoundException {
         String absolutePath = file.getAbsolutePath();
-        String className = absolutePath.split("classes\\\\")[1]
-                .replaceAll("\\\\", ".")
-                .replaceAll(".class", "");
+        String classPattern = "^(.+classes\\\\)(.+)(.class)$";
+        Pattern pattern = Pattern.compile(classPattern);
+        Matcher matcher = pattern.matcher(absolutePath);
         Class currentClass = null;
-        if (!className.endsWith("DispatcherServlet")) {
-            currentClass = Class.forName(className);
+        if (matcher.find()) {
+            String className = matcher.group(2).replace("\\", ".");
+            if (!className.endsWith("DispatcherServlet")) {
+                currentClass = Class.forName(className);
+            }
         }
+
         return currentClass;
     }
 

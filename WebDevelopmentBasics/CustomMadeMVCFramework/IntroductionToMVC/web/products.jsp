@@ -7,42 +7,7 @@
     <link href="${pageContext.request.contextPath}/css/products.css" rel="stylesheet">
 </head>
 <body>
-<div class="navbar-wrapper">
-    <div class="container">
-
-        <nav class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                            aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/home/index">Sharp Store</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class=""><a href="/home/products">Products</a></li>
-                        <li><a href="/home/about">About Us</a></li>
-                        <li><a href="/home/contacts">Contacts</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">Theme <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Dark</a></li>
-                                <li><a href="#">Light</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
-
-    </div>
-</div>
+<jsp:include page="${pageContext.request.contextPath}/menu.jsp"></jsp:include>
 
 <div class="container">
     <div class="row">
@@ -62,7 +27,16 @@
             <c:set var="knives" value="${knives}"/>
             <c:forEach var="knife" items="${knives}">
                 <div class="card col-sm-3 thumbnail">
-                    <img class="card-image-top img-fluid  img-responsive " src="${knife.imageURL}">
+                    <c:set var="image" value="${knife.imageURL}"/>
+                    <c:choose>
+                        <c:when test="${not empty image}">
+                            <img class="card-image-top img-fluid  img-responsive " src="${image}">
+                        </c:when>
+                        <c:otherwise>
+                            <img class="card-image-top img-fluid  img-responsive " src="http://www.cfmbchurch.com/wp-content/uploads/2011/03/NoImageAvailable-e1458578476489-300x150.jpg">
+                        </c:otherwise>
+                    </c:choose>
+
                     <div class="card-block">
                         <h4 class="card-title">
                             <c:out value="${knife.name}"/>
@@ -70,7 +44,16 @@
                         <p class="card-text">
                             <c:out value="$${knife.price}"/>
                         </p>
-                        <a class="card-button btn btn-primary" name="buy"  href="/home/buy/${knife.id}">Buy</a>
+                        <c:set var="user" value="${sessionScope.user}"/>
+                        <c:choose>
+                            <c:when test="${not empty user}">
+                                <a class="card-button btn btn-primary" name="edit"  href="/home/admin/edit/${knife.id}">Edit</a>
+                                <a class="card-button btn btn-primary" name="delete"  href="/home/admin/delete/${knife.id}">Delete</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a class="card-button btn btn-primary" name="buy"  href="/home/buy/${knife.id}">Buy</a>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </c:forEach>
@@ -78,12 +61,7 @@
     </div>
 </div>
 <hr>
-<div class="container marketing">
-    <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>© 2017 Sharp Store Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-    </footer>
-</div>
+<jsp:include page="${pageContext.request.contextPath}/footer.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 </body>

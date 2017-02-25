@@ -1,47 +1,58 @@
 package dtos;
 
 import enums.OrderType;
+import enums.Status;
 
 public class OrderDto {
-    private String buyerName;
-    private String buyerNumber;
-    private String buyerAddress;
+    private Long id;
+    private String name;
+    private String number;
+    private String address;
     private OrderType orderType;
     private KnifeDto product;
+    private Status status;
 
     public OrderDto() {
     }
 
     public OrderDto(String buyerName, String buyerNumber, String buyerAddress,OrderType orderType,KnifeDto product) {
-        this.setBuyerName(buyerName);
-        this.setBuyerNumber(buyerNumber);
-        this.setBuyerAddress(buyerAddress);
+        this.setName(buyerName);
+        this.setNumber(buyerNumber);
+        this.setAddress(buyerAddress);
         this.setProduct(product);
         this.setOrderType(orderType);
     }
 
-    public String getBuyerName() {
-        return buyerName;
+    public Long getId() {
+        return id;
     }
 
-    public void setBuyerName(String buyerName) {
-        this.buyerName = buyerName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getBuyerNumber() {
-        return buyerNumber;
+    public String getName() {
+        return name;
     }
 
-    public void setBuyerNumber(String buyerNumber) {
-        this.buyerNumber = buyerNumber;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getBuyerAddress() {
-        return buyerAddress;
+    public String getNumber() {
+        return number;
     }
 
-    public void setBuyerAddress(String buyerAddress) {
-        this.buyerAddress = buyerAddress;
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public KnifeDto getProduct() {
@@ -58,5 +69,13 @@ public class OrderDto {
 
     public void setOrderType(OrderType orderType) {
         this.orderType = orderType;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

@@ -1,14 +1,22 @@
 package models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name = "messages")
 public class Message {
     private Long id;
-    private String senderEmail;
+    private String email;
     private String subject;
     private String message;
 
     public Message() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -17,12 +25,12 @@ public class Message {
         this.id = id;
     }
 
-    public String getSenderEmail() {
-        return senderEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setSenderEmail(String senderEmail) {
-        this.senderEmail = senderEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSubject() {
