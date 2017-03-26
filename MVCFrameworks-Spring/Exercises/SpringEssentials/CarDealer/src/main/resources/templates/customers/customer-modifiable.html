@@ -1,0 +1,24 @@
+<main class="col-4 offset-4 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center"><h1 class="display-3" th:text="|${type} customer|"> </h1></div>
+                <br/>
+                <form th:method="post" th:object="${customer}">
+                    <div class="form-group row">
+                        <label class="form-control-label">Full Name</label>
+                        <input type="text" class="form-control" th:field = "*{name}"/>
+                    </div>
+                    <div class="form-group row">
+                        <label class="form-control-label">Birth Date</label>
+                        <input type="date" class="form-control"  placeholder="yyyy-MM-dd" th:field="*{birthDate}" required/>
+                    </div>
+                    <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
+                          th:value="${type}"/>
+                </form>
+                <br/>
+            </div>
+        </div>
+    </div>
+</main>
+

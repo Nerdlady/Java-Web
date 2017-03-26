@@ -1,0 +1,37 @@
+<main class="col-4 offset-4 text-center">
+    <div class="container">
+        <div class="row">
+            <div th:replace = ~{errors}></div>
+            <div class="col-12">
+                <div class="text-center"><h1 class="display-3">Register</h1></div>
+                <br/>
+                <form method="post" th:object="${user}">
+                    <div class="form-group row">
+                        <label class="sr-only">Email</label>
+                        <input  class="form-control" placeholder="somebody@example.com" th:field="*{email}"/>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="sr-only">Username</label>
+                        <input  class="form-control" placeholder="Username" th:field="*{username}"/>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="sr-only">Password</label>
+                        <input type="password" class="form-control" placeholder="Password" th:field="*{password}"/>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="sr-only">Confirm Password</label>
+                        <input type="password"   class="form-control" placeholder="Confirm Password" th:field="*{confirmPassword}"/>
+                    </div>
+
+                    <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
+                           value="Register"/>
+                </form>
+                <br/>
+            </div>
+        </div>
+    </div>
+</main>
+

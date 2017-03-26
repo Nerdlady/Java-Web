@@ -1,0 +1,23 @@
+<main class="col-4 offset-4 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center"><h1 class="display-3" th:text="|${type} supplier|"> </h1></div>
+                <br/>
+                <form th:method="post" th:object="${supplier}">
+                    <div class="form-group row ">
+                        <label class="form-control-label">Full Name</label>
+                        <input type="text" class="form-control" th:field = "*{name}"/>
+                    </div>
+                    <div class="checkbox row">
+                        <label>Importer: <input style="width: 15px; height: 15px" type="checkbox" th:field="*{importer}"/></label>
+                    </div>
+                    <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
+                          th:value="${type}"/>
+                </form>
+                <br/>
+            </div>
+        </div>
+    </div>
+</main>
+

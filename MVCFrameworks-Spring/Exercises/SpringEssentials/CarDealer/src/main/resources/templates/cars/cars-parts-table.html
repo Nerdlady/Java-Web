@@ -1,0 +1,22 @@
+<div class="container" th:object="${car}" xmlns="http://www.w3.org/1999/html">
+    <h4 th:text="|Make: *{make}|"></h4>
+    <h4 th:text="|Model: *{model}|"></h4>
+    <h4 th:text="|Travelled Distance: *{#numbers.formatDecimal(travelledDistance,0,2)}|"></h4>
+    <h4>Parts:</h4><br/>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="part : *{parts}">
+            <th scope="row" th:text="${part.name}"></th>
+            <td th:text="${part.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,61 @@
+<header>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-info">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/">Car Dealer</a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/customers/all}">Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/cars/all}">Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/parts/all}">Parts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/suppliers}">Suppliers</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="true" aria-expanded="false">Sales</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" th:href="@{/sales/all}">All</a>
+                            <a class="dropdown-item" th:href="@{/sales/all/discounted}">Discounted</a>
+                            <a th:if="${session.user}" class="dropdown-item" th:href="@{/sales/add}">Add</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <th:block th:switch="${session.user}">
+                        <th:block th:case="null">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/register">Register</a>
+                            </li>
+                        </th:block>
+                        <th:block th:case="*">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logs/all">Logs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/logout">Logout</a>
+                            </li>
+                        </th:block>
+
+                    </th:block>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,34 @@
+<div class="container">
+    <a th:if="${session.user}" href="/suppliers/add" class="btn btn-warning m-1"><strong>+</strong> Add Supplier</a>
+    <form class="form-inline">
+        Filter:
+        <input type="submit" name="type" class="btn btn-link" value="Local"/>
+        <input type="submit" name="type" class="btn btn-link" value="Importers"/>
+    </form>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+
+            <th>Id</th>
+            <th>Name</th>
+            <th>Number of parts</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="supplier : ${suppliers}">
+            <th scope="row" th:text="${supplier.id}"></th>
+            <td th:text="${supplier.name}"></td>
+            <td th:text="${#lists.size(supplier.parts)}"></td>
+            <th:block th:if="${session.user}">
+                <td>
+                    <a th:href="@{/suppliers/delete/{id}(id=${supplier.id})}">Delete</a>
+                </td>
+                <td>
+                    <a th:href="@{/suppliers/edit/{id}(id=${supplier.id})}">Edit</a>
+                </td>
+            </th:block>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

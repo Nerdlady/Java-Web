@@ -1,0 +1,35 @@
+<main class="col-4 offset-4 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center"><h1 class="display-3">Edit part</h1></div>
+                <br/>
+                <form th:method="post" th:object="${part}">
+                    <div class="form-group row">
+                        <label class="form-control-label">Name</label>
+                        <input type="text" class="form-control" th:field="*{name}" readonly/>
+                    </div>
+                    <div class="form-group row">
+                        <label class="form-control-label">Price</label>
+                        <input type="number" step="0.01" min="0"  class="form-control" th:field="*{price}" required/>
+                    </div>
+                    <div class="form-group row">
+                        <label class="form-control-label">Quantity</label>
+                        <input type="number" class="form-control" th:field="*{quantity}"/>
+                    </div>
+                    <div class="form-group row">
+                        <label class="form-control-label">Supplier</label>
+                        <select class="form-control" name="supplierName" readonly>
+                            <option selected="selected" th:text="*{supplier.name}" ></option>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
+                           th:value="Edit"/>
+
+                </form>
+                <br/>
+            </div>
+        </div>
+    </div>
+</main>
+

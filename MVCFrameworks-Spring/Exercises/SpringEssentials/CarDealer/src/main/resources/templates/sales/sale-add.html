@@ -1,0 +1,34 @@
+<main class="col-4 offset-4 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center"><h1 class="display-3">Add sale</h1></div>
+                <br/>
+                <form th:method="post" th:object="${sale}">
+                    <div class="form-group row">
+                        <label class="form-control-label">Customer</label>
+                        <select class="form-control" name="customerName">
+                            <option th:each="customer : ${customers}"  th:value="${customer.name}" th:text="${customer.name}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="form-control-label">Supplier</label>
+                        <select class="form-control" name="carName">
+                            <option th:each="car : ${cars}"  th:value="${car.make}" th:text="|${car.make} ${car.model}|"></option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label class="form-control-label">Discount</label>
+                        <input type="number" step="0.01" min="0" max="1.00"  class="form-control" th:field="*{discount}" required/>
+                    </div>
+
+                    <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
+                           th:value="Add"/>
+                </form>
+                <br/>
+            </div>
+        </div>
+    </div>
+</main>
+

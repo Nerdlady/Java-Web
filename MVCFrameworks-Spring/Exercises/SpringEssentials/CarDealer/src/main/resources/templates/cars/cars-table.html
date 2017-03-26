@@ -1,0 +1,36 @@
+<div class="container">
+    <a th:if="${session.user}" href="/cars/add" class="btn btn-warning m-1"><strong>+</strong> Add Car</a>
+    <div class="row" style="padding: 10px">
+            <form>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="make" placeholder="Make..."/>
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn btn-primary " value="Find" />
+                </span>
+                </div>
+            </form>
+
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+
+            <th>Make</th>
+            <th>Model</th>
+            <th>Travelled distance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car : ${cars}">
+            <th scope="row" th:text="${car.make}"></th>
+            <td th:text="${car.model}"></td>
+            <td th:text="${#numbers.formatDecimal(car.travelledDistance,0,2)}"></td>
+            <td>
+                <a th:href="@{/cars/{id}/parts(id=${car.id})}">Details</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
