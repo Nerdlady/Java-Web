@@ -1,0 +1,30 @@
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Magnitude</th>
+            <th>Released On</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="virus : ${viruses}">
+            <th scope="row" th:text="${virus.id}">1</th>
+            <td th:text="${virus.name}">Mark</td>
+            <td th:text="${virus.magnitude}">Otto</td>
+            <td th:text="${#dates.format(virus.releasedOn,'yyyy-MM-dd')}">@mdo</td>
+            <td>
+                <a class="btn btn-info" th:href="@{/viruses/edit/{id}(id=${virus.id})}">Edit</a>
+            </td>
+
+            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                <a class="btn btn-info" th:href="@{/viruses/delete/{id}(id=${virus.id})}">Delete</a>
+            </td>
+        </tr>
+        <tr>
+        </tbody>
+    </table>
+</div>

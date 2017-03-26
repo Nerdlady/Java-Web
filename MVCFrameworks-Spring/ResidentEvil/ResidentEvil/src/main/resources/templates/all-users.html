@@ -1,0 +1,23 @@
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Is Enable</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="user : ${users}">
+            <th scope="row" th:text="${user.id}">1</th>
+            <td th:text="${user.username}">Mark</td>
+            <td th:text="${user.Enabled}">True</td>
+            <td>
+                <a class="btn btn-info" th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a>
+            </td>
+        </tr>
+        <tr>
+        </tbody>
+    </table>
+</div>
