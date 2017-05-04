@@ -1,0 +1,14 @@
+<div class="row">
+    <div th:object="${challengedUser}" style="text-align: center">
+        <div>
+            <img src="/img/ready-to-fight.jpg" height="50%" width="50%">
+        </div>
+        <br/>
+        <div>
+            <a class="btn btn-primary btn-twitter btn-sm" style="font-size: large" th:href="@{..}"> Cancel</a>
+            <a class="btn btn-primary btn-twitter btn-sm" style="font-size: large"
+               th:href="@{/users/fight/{id}(id= *{id})}"> Fight</a>
+        </div>
+    </div>
+</div>
+

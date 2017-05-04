@@ -1,0 +1,35 @@
+<div id="onLoad" >
+    <div class="row">
+        <div class="form-group col-sm-12">
+            <p class="question" id="context"></p>
+        </div>
+    </div>
+    <div class="row table-row">
+        <div class="form-group col-sm-6 ">
+            <button class="form-control btn btn-primary btn-xs questionAnswer" id="answerOne"></button>
+        </div>
+
+        <div class="form-group col-sm-6 ">
+            <button class="form-control btn btn-primary btn-xs questionAnswer" id="answerTwo"></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-6 ">
+            <button class="form-control btn btn-primary btn-xs questionAnswer" id="answerThree"></button>
+        </div>
+
+        <div class="form-group col-sm-6 ">
+            <button class="form-control btn btn-primary btn-xs questionAnswer" id="answerFour"></button>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="form-group col-sm-1 col-sm-offset-11">
+            <a th:if="${#httpServletRequest.requestURI.startsWith('/users/fight') || #httpServletRequest.requestURI.startsWith('/users/challenges')}" class="form-control btn btn-primary pull-right"  th:href="@{..}">Continue</a>
+                <a th:if="${#httpServletRequest.requestURI =='/questions/practice' }" class="form-control btn btn-primary pull-right"  th:href="@{/questions/practice}">Next</a>
+
+        </div>
+    </div >
+
+    <meta name="_csrf" id="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" id="_csrf_header" th:content="${_csrf.headerName}"/>
+</div>

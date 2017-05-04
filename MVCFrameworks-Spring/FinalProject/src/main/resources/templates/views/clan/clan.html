@@ -1,0 +1,49 @@
+<div class="row">
+    <div th:object="${clan}" style="text-align: center">
+        <div>
+            <h2 th:text="|Clan: *{name}|"></h2>
+        </div>
+        <br/>
+        <div>
+            <h3 th:text="|Score: *{totalScore}|"></h3>
+        </div>
+        <br/>
+        <div th:if="${hasClan == false}">
+            <a  class="btn btn-primary btn-twitter "  th:href="@{/clans/join/{id}(id=*{id})}">Join</a>
+        </div>
+        <div th:if="${canLeave == true}">
+            <a  class="btn btn-primary btn-twitter "  th:href="@{/clans/leave}">Leave</a>
+        </div>
+        <br/>
+        <div th:each="user : ${clan.users}">
+            <div class="col-lg-3 col-sm-6  ">
+                <div class="card hovercard " th:style="${user.user.id == #authentication.getPrincipal().getId() ? 'background:#36C3AE' : ''}">
+                    <div class="cardheader">
+                    </div>
+                    <div class="avatar">
+                        <img alt="" th:src="${user.user.imageURL == null ? '/img/find_user.png' : user.user.imageURL}">
+                    </div>
+                    <div class="info">
+                        <div class="title" th:text="${user.user.username}">
+                        </div>
+                    </div>
+
+                    <div class="bottom">
+
+                        <th:block th:if="${user.user.id != #authentication.getPrincipal().getId()}">
+                            <a class="btn btn-primary btn-twitter btn-sm" th:href="@{/users/challenge/{id}(id= ${user.user.id})}">
+                                Challenge</a>
+                            <a class="btn btn-primary btn-twitter btn-sm" th:href="@{/users/profile/{id}(id= ${user.user.id})}">
+                                Profile</a>
+                            <a th:if="${clan.owner.id == #authentication.getPrincipal().getId()}"
+                               class="btn btn-primary btn-twitter btn-sm" th:href="@{/clans/remove/{id}(id= ${user.user.id})}">
+                                Remove</a>
+                        </th:block>
+                        <a th:if="${user.user.id == #authentication.getPrincipal().getId()}"
+                           class="btn btn-primary btn-twitter btn-sm" th:href="@{/users/profile}">My Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

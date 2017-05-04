@@ -1,0 +1,25 @@
+<div class="container">
+    <form method="post" th:object="${updateUser}" enctype="multipart/form-data">
+        <div class="form-group" th:classappend="${#fields.hasErrors('password')} ? 'has-error'" >
+            <label class="form-control-label" for="password">Password</label>
+            <input type="password" class="form-control" id="password"  th:field="*{password}"/>
+            <div id="passwordHelp"  th:each="error : ${#fields.errors('password')}" th:text="${error}">Error Message</div>
+        </div>
+
+        <div class="form-group" th:classappend="*{password} != *{confirmPassword} ? 'has-error'" >
+            <label for="sideEff">Confirm Password</label>
+            <input type="password" class="form-control" id="sideEff"  th:field="*{confirmPassword}"/>
+            <div  th:if="*{password} != *{confirmPassword}">Passwords Not Matching</div>
+        </div>
+
+        <div class="form-group" >
+            <label for="sideEff">Picture</label>
+            <input type="file"  name="file"/>
+
+        </div>
+
+        <button type="submit" class="btn btn-default">Save</button>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    </form>
+
+</div>

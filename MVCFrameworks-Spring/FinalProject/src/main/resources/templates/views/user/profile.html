@@ -1,0 +1,27 @@
+<div class="row">
+    <div>
+        <div class="col-lg-offset-3 col-lg-6 col-sm-offset-3 col-sm-6  ">
+            <div class="card hovercard">
+                <div class="cardheader">
+                </div>
+                <div class="avatar">
+                    <img alt="" th:src="${user.user.imageURL == null ? '/img/find_user.png' : user.user.imageURL}">
+                </div>
+                <div class="info">
+                    <div class="title" th:text="${user.user.username}">
+                    </div>
+                    <div th:text="|Score: ${user.score}|"></div>
+                    <div th:text="|Name: ${user.user.fullName}|"></div>
+                    <div th:text="|Email: ${user.user.email}|"></div>
+                </div>
+                <div class="bottom" th:if="${#authentication != null}">
+                    <a th:if="${user.user.id != #authentication.getPrincipal().getId()}"
+                       class="btn btn-primary btn-twitter btn-sm"
+                       th:href="@{/users/challenge/{id}(id= ${user.user.id})}">
+                        Challenge</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

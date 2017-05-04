@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-12">
+        <table class="table  table-hover" id="dataTables-example">
+            <thead>
+            <tr>
+                <th>Clan Name</th>
+                <th>Score</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="clan : ${clans}">
+                    <td>
+                        <a th:href="@{/clans/all/{id}(id = ${clan.id})}"  th:text="${clan.name}"></a>
+                    </td>
+                    <td th:text="${clan.totalScore}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <meta name="_csrf" id="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" id="_csrf_header" th:content="${_csrf.headerName}"/>
+</div>

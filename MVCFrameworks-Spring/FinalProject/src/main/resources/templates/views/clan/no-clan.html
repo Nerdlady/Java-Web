@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div  th:object="${challengedUser}" style="text-align: center">
+            <div>
+                <h2>You do not have clan. You can create or join one.</h2>
+            </div>
+            <br/>
+            <div>
+                <a class="btn btn-primary btn-twitter btn-sm" style="font-size: large" th:href="@{..}"> Cancel</a>
+                <a class="btn btn-primary btn-twitter btn-sm" style="font-size: large" th:href="@{/clans/create}"> Create</a>
+                <a class="btn btn-primary btn-twitter btn-sm" style="font-size: large" th:href="@{/clans/all}"> View clans</a>
+            </div>
+        </div>
+    </div>
+</div>

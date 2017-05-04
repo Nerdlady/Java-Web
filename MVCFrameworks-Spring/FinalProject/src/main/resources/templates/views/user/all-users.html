@@ -1,0 +1,31 @@
+<div class="row">
+    <div th:each="user : ${users}">
+        <div class="col-lg-3 col-sm-6  ">
+            <div class="card hovercard "
+                 th:style="${user.user.id == #authentication.getPrincipal().getId() ? 'background:#36C3AE' : ''}">
+                <div class="cardheader">
+                </div>
+                <div class="avatar">
+                    <img alt="" th:src="${user.user.imageURL == null ? '/img/find_user.png' : user.user.imageURL}">
+                </div>
+                <div class="info">
+                    <div class="title" th:text="${user.user.username}">
+                    </div>
+                    <div class="desc" th:text="|Score: ${user.score}|"></div>
+                </div>
+                <div class="bottom">
+                    <a th:if="${user.user.id != #authentication.getPrincipal().getId()}"
+                       class="btn btn-primary btn-twitter btn-sm"
+                       th:href="@{/users/challenge/{id}(id= ${user.user.id})}">
+                        Challenge</a>
+                    <a th:if="${user.user.id != #authentication.getPrincipal().getId()}"
+                       class="btn btn-primary btn-twitter btn-sm" th:href="@{/users/profile/{id}(id= ${user.user.id})}">
+                        Profile</a>
+                    <a th:if="${user.user.id == #authentication.getPrincipal().getId()}"
+                       class="btn btn-primary btn-twitter btn-sm" th:href="@{/users/profile}">My Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+<script th:src="@{/js/jquery.metisMenu.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
+<th:block th:if="${#httpServletRequest.requestURI =='/admin/questions/all' || #httpServletRequest.requestURI =='/admin/questions/approve'}">
+    <script  type="text/javascript" th:src="@{/js/questions-table.js}"></script>
+
+</th:block>
+
+<script th:if="${#httpServletRequest.requestURI =='/questions/practice'
+||  #httpServletRequest.requestURI.startsWith('/users/fight')
+||  #httpServletRequest.requestURI.startsWith('/users/challenge')}" type="text/javascript" th:src="@{/js/question.js}"></script>
+
+<th:block th:if="${#httpServletRequest.requestURI =='/admin/questions/all'
+|| #httpServletRequest.requestURI =='/admin/questions/approve'
+|| #httpServletRequest.requestURI.startsWith('/users/challenge')
+|| #httpServletRequest.requestURI =='/clans/all'}">
+    <script   type="text/javascript" th:src="@{/js/dataTables/jquery.dataTables.js}"></script>
+    <script  type="text/javascript" th:src="@{/js/dataTables/dataTables.bootstrap.js}"></script>
+    <script type="text/javascript" th:src="@{/js/document-ready.js}"></script>
+</th:block>
